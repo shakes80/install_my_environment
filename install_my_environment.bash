@@ -151,6 +151,24 @@ mylog REMOVENANC=$REMOVENANC
     
 	  #TODO: add verbosity to let users know what is going on
     #mylog 'Verbose Mode Active'
+    # install oh_my_zsh
+    mylog 'downloading and executing Oh My Zsh intall script'
+    if [[ $COMMIT = true ]];then
+      if [ -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
+      else #if the .oh-my-zsh directory exists it's already installed
+        mylog '*** --- Skipping due to EXISTS: downloading and executing Oh My Zsh intall script'
+      fi
+    else
+      mylog '*** -- Skipping due to NO-COMMIT: downloading and executing Oh My Zsh intall script'
+    fi
+    # end install oh_my_zsh
+   
+    # if $ZSHRC still doesn't exist, lets use the template
+    if [ ! -f "$ZSHRC" ]; then
+      [ $COMMIT = true ] && /bin/cp -rf ~/.oh-my-zsh/templates/zshrc.zsh-template $ZSHRC || mylog "*** --- Skipping due to NO-COMMIT: Not Overwriting - $ZSHRCBACKUPFILE" 
+    fi
+   
     mylog "Copying $ZSHRC to $ZSHRCBACKUPFILE"
     # try to backup .zshrc
     if [ -f "$ZSHRCBACKUPFILE" ]; then      
@@ -168,20 +186,7 @@ mylog REMOVENANC=$REMOVENANC
       exit
     fi
     # end backup .zshrc
-        
-    # install oh_my_zsh
-    mylog 'downloading and executing Oh My Zsh intall script'
-    if [[ $COMMIT = true ]];then
-      if [ -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
-      else #if the .oh-my-zsh directory exists it's already installed
-        mylog '*** --- Skipping due to EXISTS: downloading and executing Oh My Zsh intall script'
-      fi
-    else
-      mylog '*** -- Skipping due to NO-COMMIT: downloading and executing Oh My Zsh intall script'
-    fi
-    # end install oh_my_zsh
-
+      
     # add support for oh_my_zsh plugins
     mylog 'adding support for oh_my_zsh plugins'
     if [[ $COMMIT = true ]];then
