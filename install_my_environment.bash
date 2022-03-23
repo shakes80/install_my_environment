@@ -153,6 +153,13 @@ mylog REMOVENANC=$REMOVENANC
     #mylog 'Verbose Mode Active'
     # install oh_my_zsh
     mylog 'downloading and executing Oh My Zsh intall script'
+    
+    mylog "$COMMIT"
+    mylog "$COMMIT"
+    mylog "$COMMIT"
+    mylog "$COMMIT"
+    mylog "$COMMIT"
+    
     if [[ $COMMIT = true ]];then
       if [ -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
@@ -165,6 +172,8 @@ mylog REMOVENANC=$REMOVENANC
     # end install oh_my_zsh
    
     # if $ZSHRC still doesn't exist, lets use the template
+
+
     if [ ! -f $ZSHRC ]; then
       [ $COMMIT = true ] && /bin/cp -rf ~/.oh-my-zsh/templates/zshrc.zsh-template $ZSHRC || mylog "*** --- Skipping due to NO-COMMIT: Not Overwriting - $ZSHRCBACKUPFILE" 
     fi
