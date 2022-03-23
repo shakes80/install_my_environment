@@ -159,14 +159,10 @@ mylog REMOVENANC=$REMOVENANC
     mylog "$COMMIT"
     mylog "$COMMIT"
     mylog "$COMMIT"
-    mylog [ -d "~/.oh-my-zsh" ]
-    mylog [ -d "~/.oh-my-zsh" ]
-    mylog [ -d "~/.oh-my-zsh" ]
-    mylog [ -d "~/.oh-my-zsh" ]
-    mylog [ -d "~/.oh-my-zsh" ]
+    
     
     if [[ $COMMIT = true ]];then
-      if [ -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
+      if [ ! -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
       else #if the .oh-my-zsh directory exists it's already installed
         mylog '*** --- Skipping due to EXISTS: downloading and executing Oh My Zsh intall script'
