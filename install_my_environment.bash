@@ -211,12 +211,11 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10" ]; then echo "DIR not th
     mylog 'cloning powerlevel10k'
     if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10" ]; then # if directory does not exist
       if [[ $COMMIT = true ]];then
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10 >/dev/null 
-      else  
+        git clone https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k else  
         mylog '*** --- Skipping due to NO-COMMIT: Cloning powerlevel10k'
       fi  
     else
-        mylog "*** --- Skipping due to EXISTS: powerlevel10k already present in ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10"
+        mylog "*** --- Skipping due to EXISTS: powerlevel10k already present in $HOME/.oh-my-zsh/custom/themes/powerlevel10k"
     fi
     mylog 'updating .zshrc with powerlevel10k'
     if [[ $COMMIT = true ]];then
