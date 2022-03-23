@@ -208,7 +208,7 @@ mylog REMOVENANC=$REMOVENANC
     # clone and install powerlevel10k
     
     mylog 'cloning powerlevel10k'
-    if [ -d "$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then # String NOT found in .zshrc
+    if [ ! -d "$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then # if directory exists
       if [[ $COMMIT = true ]];then
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10 >/dev/null 
       else  
