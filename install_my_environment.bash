@@ -193,7 +193,6 @@ mylog REMOVENANC=$REMOVENANC
     else 
       mylog "$ZSHRCBACKUPFILE does not exist, copying."
       [ $COMMIT = true ] && /bin/cp $ZSHRC $ZSHRCBACKUPFILE || echo "*** -- Skipping due to NO-COMMIT: /bin/cp $ZSHRC $ZSHRCBACKUPFILE" 
-      exit
     fi
     # end backup .zshrc
       
