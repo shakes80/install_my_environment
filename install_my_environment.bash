@@ -165,7 +165,7 @@ mylog REMOVENANC=$REMOVENANC
     # end install oh_my_zsh
    
     # if $ZSHRC still doesn't exist, lets use the template
-    if [ ! -f "$ZSHRC" ]; then
+    if [ ! -f $ZSHRC ]; then
       [ $COMMIT = true ] && /bin/cp -rf ~/.oh-my-zsh/templates/zshrc.zsh-template $ZSHRC || mylog "*** --- Skipping due to NO-COMMIT: Not Overwriting - $ZSHRCBACKUPFILE" 
     fi
    
