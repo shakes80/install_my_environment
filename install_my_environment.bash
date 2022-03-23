@@ -159,6 +159,11 @@ mylog REMOVENANC=$REMOVENANC
     mylog "$COMMIT"
     mylog "$COMMIT"
     mylog "$COMMIT"
+    mylog [ -d "~/.oh-my-zsh" ]
+    mylog [ -d "~/.oh-my-zsh" ]
+    mylog [ -d "~/.oh-my-zsh" ]
+    mylog [ -d "~/.oh-my-zsh" ]
+    mylog [ -d "~/.oh-my-zsh" ]
     
     if [[ $COMMIT = true ]];then
       if [ -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
