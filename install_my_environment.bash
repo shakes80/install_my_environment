@@ -102,44 +102,36 @@ mylog REVERTZSHRC=$REVERTZSHRC
 ### Start Payload Section
 # these lines skip the payload if -c or --commit is ommitted
 #[ $COMMIT ]&& COMMAND || echo '*** Skipping due to NO-COMMIT:'
+
+#TODO: add verbosity to let users know what is going on
+#mylog 'Verbose Mode Active'
     
-	  #TODO: add verbosity to let users know what is going on
-    #mylog 'Verbose Mode Active'
-    # install oh_my_zsh
-    mylog 'downloading and executing Oh My Zsh intall script'
-      if [ ! -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
-      else #if the .oh-my-zsh directory exists it's already installed
-        mylog '*** --- Skipping due to EXISTS: downloading and executing Oh My Zsh intall script'
-      fi
-    # end install oh_my_zsh
-   
-    # if $ZSHRC still doesn't exist, lets use the template
-    if [ ! -f $ZSHRC ]; then
-    #TODO: COPY .ZSHRC TEMPLATE
-      /bin/cp -rf ./templates/.zshrc.template ~/.zshrc
-    fi
-   
-    mylog "Copying $ZSHRC to $ZSHRCBACKUPFILE"
-    # try to backup .zshrc
-    /bin/cp -rf $ZSHRC $ZSHRCBACKUPFILE 
-    # end backup .zshrc
+if [ ! -f $ZSHRC ]; then
+  #TODO: COPY .ZSHRC TEMPLATE
+  /bin/cp -rf ./templates/.zshrc.template $ZSHRC
+fi
+
+# try to backup .zshrc
+mylog "Copying $ZSHRC to $ZSHRCBACKUPFILE"
+/bin/cp -rf $ZSHRC $ZSHRCBACKUPFILE 
+# end backup .zshrc
+
+mylog 'copying powerlevel10k config'
+/bin/cp .p10k.zsh ~/
+
+# install oh_my_zsh
+mylog 'downloading and executing Oh My Zsh intall script'
+if [ ! -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
+else #if the .oh-my-zsh directory exists it's already installed
+  mylog '*** --- Skipping due to EXISTS: downloading and executing Oh My Zsh intall script'
+fi
+# end install oh_my_zsh
       
-    # add support for oh_my_zsh plugins
-    mylog 'adding support for oh_my_zsh plugins'
-    sed -i 's/plugins=(git)/plugins=(aliases brew common-aliases docker emoji extract gh git history iterm2 macos pip redis-cli sudo ubuntu ufw vscode web-search wp-cli xcode)/g' $ZSHRC || echo '*** -- Skipping due to NO-COMMIT: Enabling Plugins'
-    # end add oh_my_zsh plugins
-
-#if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10" ]; then echo "DIR not there"; else echo "DIR there";fi
-
-    # clone and install powerlevel10k
-    mylog 'cloning powerlevel10k'
-    if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10" ]; then # if directory does not exist
-        git clone https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k 
-    fi  
-    
-    mylog 'copying powerlevel10k config'
-    cp .p10k.zsh ~/
-    # end install powerlevel10k
-
+# clone powerlevel10k
+mylog 'cloning powerlevel10k'
+if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10" ]; then # if directory does not exist
+  git clone https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k 
+fi  
+# end install powerlevel10k
 ### End Payload Section 
