@@ -106,10 +106,10 @@ mylog REVERTZSHRC=$REVERTZSHRC
 #TODO: add verbosity to let users know what is going on
 #mylog 'Verbose Mode Active'
     
-if [ ! -f $ZSHRC ]; then
-  #TODO: COPY .ZSHRC TEMPLATE
-  /bin/cp -rf ./templates/.zshrc.template $ZSHRC
-fi
+
+#TODO: COPY .ZSHRC TEMPLATE
+/bin/cp -rf ./templates/.zshrc.template $ZSHRC
+
 
 # try to backup .zshrc
 mylog "Copying $ZSHRC to $ZSHRCBACKUPFILE"
@@ -134,4 +134,8 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10" ]; then # if directory d
   git clone https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k 
 fi  
 # end install powerlevel10k
+
+#TODO: COPY .ZSHRC TEMPLATE
+/bin/cp -rf ./templates/.zshrc.template $ZSHRC
+source $ZSHRC
 ### End Payload Section 
