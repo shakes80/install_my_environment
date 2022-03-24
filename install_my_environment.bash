@@ -112,8 +112,8 @@ mylog 'copying powerlevel10k config'
 # install oh_my_zsh
 mylog 'downloading and executing Oh My Zsh intall script'
 if [ ! -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
-else #if the .oh-my-zsh directory exists it's already installed
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended --keep-zshrc" 
+else #if the .oh-my-zsh directory exists it's already installed 
   mylog '*** --- Skipping due to EXISTS: downloading and executing Oh My Zsh intall script'
 fi
 # end install oh_my_zsh
