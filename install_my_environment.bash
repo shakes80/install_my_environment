@@ -117,7 +117,7 @@ mylog REVERTZSHRC=$REVERTZSHRC
     # if $ZSHRC still doesn't exist, lets use the template
     if [ ! -f $ZSHRC ]; then
     #TODO: COPY .ZSHRC TEMPLATE
-      /bin/cp -rf ~/.oh-my-zsh/templates/zshrc.zsh-template
+      /bin/cp -rf ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
     fi
    
     mylog "Copying $ZSHRC to $ZSHRCBACKUPFILE"
@@ -139,7 +139,7 @@ mylog REVERTZSHRC=$REVERTZSHRC
     fi  
     
     mylog 'copying powerlevel10k config'
-    [ $COMMIT = true ]&& cp .p10k.zsh ~/ || mylog '*** - Skipping due to NO-COMMIT: Copying p10k configuration'
+    cp .p10k.zsh ~/
     # end install powerlevel10k
 
 ### End Payload Section 
