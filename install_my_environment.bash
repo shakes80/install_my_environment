@@ -127,4 +127,7 @@ fi
 
 #TODO: COPY .ZSHRC TEMPLATE
 /bin/cp -rf ./templates/.zshrc.template $ZSHRC
+
+chsh -s /usr/bin/zsh
+
 echo "You must exit to reload your profile."
