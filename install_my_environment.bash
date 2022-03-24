@@ -117,7 +117,7 @@ mylog REVERTZSHRC=$REVERTZSHRC
     # if $ZSHRC still doesn't exist, lets use the template
     if [ ! -f $ZSHRC ]; then
     #TODO: COPY .ZSHRC TEMPLATE
-      /bin/cp -rf ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+      /bin/cp -rf ./templates/.zshrc.template ~/.zshrc
     fi
    
     mylog "Copying $ZSHRC to $ZSHRCBACKUPFILE"
