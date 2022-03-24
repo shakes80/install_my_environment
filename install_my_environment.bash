@@ -99,26 +99,16 @@ mylog HELP=$HELP
 mylog REVERTZSHRC=$REVERTZSHRC
 ### End Some logging
 
-### Start Payload Section
-# these lines skip the payload if -c or --commit is ommitted
-#[ $COMMIT ]&& COMMAND || echo '*** Skipping due to NO-COMMIT:'
-
 #TODO: add verbosity to let users know what is going on
 #mylog 'Verbose Mode Active'
-    
-
 #TODO: COPY .ZSHRC TEMPLATE
 /bin/cp -rf ./templates/.zshrc.template $ZSHRC
-
-
 # try to backup .zshrc
 mylog "Copying $ZSHRC to $ZSHRCBACKUPFILE"
 /bin/cp -rf $ZSHRC $ZSHRCBACKUPFILE 
 # end backup .zshrc
-
 mylog 'copying powerlevel10k config'
 /bin/cp .p10k.zsh ~/
-
 # install oh_my_zsh
 mylog 'downloading and executing Oh My Zsh intall script'
 if [ ! -d "~/.oh-my-zsh" ];then #if the .oh-my-zsh directory is not there, install it.
@@ -137,5 +127,4 @@ fi
 
 #TODO: COPY .ZSHRC TEMPLATE
 /bin/cp -rf ./templates/.zshrc.template $ZSHRC
-source $ZSHRC
-### End Payload Section 
+echo "You must exit to reload your profile."
