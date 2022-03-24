@@ -126,6 +126,7 @@ fi
 # end install powerlevel10k
 
 #TODO: COPY .ZSHRC TEMPLATE
+
 /bin/cp -rf ./templates/.zshrc.template $ZSHRC
 
 chsh -s /usr/bin/zsh
