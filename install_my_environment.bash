@@ -1,7 +1,4 @@
 #!/bin/bash
-#
-# 
-#
 OPTS=`getopt -o vhcirRf --long verbose,help,commit,install-deps,revert-zshrc,remove-nanc,force -n 'parse-options' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 
