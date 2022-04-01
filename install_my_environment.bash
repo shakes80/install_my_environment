@@ -1,12 +1,6 @@
 #!/bin/bash
-<<<<<<< HEAD
-OPTS=`getopt -o vhcirRf --long verbose,help,commit,install-deps,revert-zshrc,remove-nanc,force -n 'parse-options' -- "$@"`
-=======
-#
-# 
-#
 OPTS=`getopt -o vhrf --long verbose,help,revert-zshrc,force -n 'parse-options' -- "$@"`
->>>>>>> baed8307e661cf3017831064399fd3815b08efb7
+
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 
 eval set -- "$OPTS"
